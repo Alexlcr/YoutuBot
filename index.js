@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
-const Role = require('./commands/role')
+const Role = require('./role')
 const moment = require('moment')
 var i = 0
 
