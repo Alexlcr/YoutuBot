@@ -1,90 +1,30 @@
 const Discord = require('discord.js')
-const Command = require('./command')
-
-module.exports = class Role extends Command {
-
-	static match(message) {
-		return message.content.startsWith('/')
-	}
-
-	static action(message) {
-
-		//Add role
-		if (message.content.startsWith('/Squeezie')) {
-
-			message.member.addRole(message.member.guild.roles.find('name', 'Communauté Squeezie'));
-
-			var embed = new Discord.RichEmbed()
-			.setColor("#c11111")
-			.addField("Yo tout le monde c'est la commu de Squeezie !")
-			message.channel.send(embed)
-			
-		else if (message.content.startsWith('/FantaBobGames')) {
-			
-			message.member.addRole(message.member.guild.roles.find('name','Communauté FantaBobGames')) {
-			
-			var emded = new Discord.RichEmbed()
-			.setColor("#c11111")
-			.addField("Bonsoir c'est la commu de FantaBobGames !")
-			message.channel.send(embed)
-			
-		else if (message.content.startsWith('/MathSeFaitDesFilms')) {
-			
-			message.member.addRole(message.member.guild.roles.find('name','Communauté Math Se Fait Des Films'))
-				
-				var embed = new Discord.RichEmbed()
-				.setColor("#c11111")
-				.addField("Si tu rejoins la communauté t'auras du chocolat !")
-				message.channel.send(embed)
-		
-		else if (message.content.startsWith('/VodKprod')
-		
-			message.member.addRole(message.member.guild.roles.find('name','Communauté VodKprod')
-
-			var embed = new Discord.RichEmbed()
-			.setColor("#c11111")
-			.addField("Tu as rejoins la communauté don poneys !")
-			message.channel.send(embed)
-			
-		else if (message.content.startsWith('/Tibo InShape')) {
-
-            message.member.addRole(message.member.guild.roles.find('name','Communauté "Tibo InShape"'))
-
-                var embed = new Discord.RichEmbed()
-                .setColor("#c11111")
-                .addField("DAMNN LA TEAM SHAPE J'espère que vous allez bien !")
-                message.channel.send(embed)
+const bot = new Discord.Client()
+const Role = require('./commands/role')
+const moment = require('moment')
+var i = 0
 
 
-		else if (message.content.startsWith('/JOYCA')) {
+bot.on('ready', function() {
 
-            message.member.addRole(message.member.guild.roles.find('name','Communauté "JOYCA"'))
-
-                var embed = new Discord.RichEmbed()
-                .setColor("#c11111")
-                .addField("Doucle CIAO !")
-                message.channel.send(embed)
+	console.log('Bot connecté')
+	bot.user.setGame('Youtube').catch(console.error)
+	
+})
 
 
-		else if (message.content.startsWith('/Mastu')) {
+//guildMemeberAdd
+bot.on('guildMemberAdd', function(member) {
 
-             message.member.addRole(message.member.guild.roles.find('name','Communauté "Mastu"'))
+	member.addRole(member.guild.roles.find("name", "Abonné(e)s"))
 
-                var embed = new Discord.RichEmbed()
-                .setColor("#c11111")
-                .addField("Bonsoir à tous mes gazelles !")
-                message.channel.send(embed)
+})
 
 
-		else if (message.content.startsWith('/Le BledArt')) {
 
-             message.member.addRole(message.member.guild.roles.find('name','Communauté "Le BledArt"'))
+	} 
+ 	
+})
 
-                var embed = new Discord.RichEmbed()
-                .setColor("#c11111")
-                .addField("Coucou les amis c'est le Bled'Art, j'espère que vous allez bien")
-                message.channel.send(embed)		
-		
-		
-		
-		
+
+bot.login(process.env.TOKEN)
