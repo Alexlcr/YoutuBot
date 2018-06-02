@@ -1,106 +1,55 @@
 const Discord = require('discord.js')
-const YoutubeStream = require('./Commande/play')
-const google = require('./Commande/google')
 const Command = require('./Commande/command')
+const Google = require('./Commande/google')
 const bot = new Discord.Client()
+const Role = require('./Commande/role')
 
-bot.on('ready', function () {
-    bot.user.setGame('Rechercher les dernières vidéos de Youtube')
+bot.on('ready', function (){
+    bot.user.setGame('Rechercher les dernières vidéos de Youtube')})
 
 
 bot.on('message', function(message){
-    if(message.content === 'Ryan est-il le meilleur modo ?')
-    message.channel.send('Encore un qui veut un grade...')
 
-    if(message.content === 'caca')
-    message.reply('TG')
 
-if(message.content.startsWith('/Squeezie'))
+ if (message.content === '/help') {
 
-        message.member.addRole(message.member.guild.roles.find('name','Communauté Squeezie'))
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Yo bienvenue dans la commu de Squeezie !", "Vous avez désormais accès à tout les channels concernant ce Youtubeur")
-        message.channel.send(embed)
-        message.reply('Voici le lien de sa chaine YouTube:       https://www.youtube.com/user/aMOODIEsqueezie')
-        
-    if(message.content.startsWith('/FantaBobGames'))
-        
-        message.member.addRole(message.member.guild.roles.find('name','Communauté FantaBobGames')) 
-        
-        var emded = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Bonsoir c'est la commu de FantaBobGames !")
-        message.channel.send(embed)
-        
-    if(message.content.startsWith('/MathSeFaitDesFilms'))
-        
-        message.member.addRole(message.member.guild.roles.find('name','Communauté Math Se Fait Des Films'))
-            
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Si tu rejoins la communauté t'auras du chocolat !")
-        message.channel.send(embed)
+    var embed = new Discord.RichEmbed()
+    .setColor("#c11111")
+    .addField("Les commandes d'aide sont: ", "-/helpRoles\n*other commands coming soon*")
+    message.channel.send(embed)
+    .catch(console.error)
+ }
+
     
-    if(message.content.startsWith('/VodKprod'))
+ if (message.content === '/helpRoles'){
+
+    var embed = new Discord.RichEmbed()
+    .setColor("#c11111")
+    .addField("Pour rejoindre une communauté faites ---> /NomDuYoutubeur", "**Les Youtubeurs disponibles sont: **\n-Squeezie\n-Amixem\n-FantaBobGames\n-TiboInShape\n-Joyca\n-Mastu\n-LeRireJaune")
+    message.channel.send(embed)
+    .catch(console.error)
+ }
+
+ if(message.content === '/Avicii'){
+
+    var embed = new Discord.RichEmbed()
+    .setColor("#ffffff")
+    .addField("Avicii, stylisé ΛVICII, de son vrai nom Tim Bergling, né le 8 septembre 1989 à Stockholm (Suède) et mort le 20 avril 2018 à Mascate (Oman), est un producteur et disc jockey suédois.","_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ " )
+    .addField("Il a aussi produit des titres sous les pseudonymes de Tim Berg et Tom Hangs.\nIl se fait connaître avec son titre Seek Bromance, sous son alias Tim Berg en 2011. Son single Levels lui permet de connaître une notoriété mondiale.","_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ")
+    .addField("Par la suite, son morceau Wake Me Up! est un des hits de l'été 2013 et détrône de nombreux records. Il est considéré comme un disc jockey important de la scène électronique.","_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ")
+    .addField("Atteint de dépression, il se suicide à 28 ans.","**_REQUIESCAT IN PACE_**")
+    message.channel.send(embed)
+    .catch(console.error)
+ }
+
+ if(Google.match(message)) {
+     return Google.action(message)
+ }
+
+  Role.parse(message)
     
-        message.member.addRole(message.member.guild.roles.find('name','Communauté VodKprod'))
-
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Tu as rejoins la communauté don poneys !")
-        message.channel.send(embed)
-        
-    if(message.content.startsWith('/Tibo InShape')) 
-
-        message.member.addRole(message.member.guild.roles.find('name','Communauté "Tibo InShape"'))
-
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("DAMNN LA TEAM SHAPE J'espère que vous allez bien !")
-        message.channel.send(embed)
-
-            
-    
-    if(message.content.startsWith('/JOYCA'))  
-
-        message.member.addRole(message.member.guild.roles.find('name','Communauté "JOYCA"'))
-
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Doucle CIAO !")
-        message.channel.send(embed)
-
-
-    if(message.content.startsWith('/Mastu')) 
-
-        message.member.addRole(message.member.guild.roles.find('name','Communauté "Mastu"'))
-
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Bonsoir à tous mes gazelles !")
-        message.channel.send(embed)
-
-
-    if(message.content.startsWith('/Le BledArt')) 
-
-        message.member.addRole(message.member.guild.roles.find('name','Communauté "Le BledArt"'))
-
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Coucou les amis c'est le Bled'Art, j'espère que vous allez bien")
-        message.channel.send(embed)
-    
-    if(message.content.startsWith('/Amixem'))
-        
-        message.member.addRole(message.memberguild.roles.find('name','Communauté Amixem'))
-        
-        var embed = new Discord.RichEmbed()
-        .setColor("#c11111")
-        .addField("Clap Bienvenue !")
-        message.channel.send(embed)
-
-})})
+  Google.parse(message)
+})
    
 
     
