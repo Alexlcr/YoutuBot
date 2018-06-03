@@ -53,4 +53,4 @@ bot.on('message', function(message){
    
 
     
-bot.login('Precess.env.TOKEN')
+bot.login('Process.env.TOKEN')
