@@ -1,7 +1,6 @@
 {
-  "name": "devbot",
+  "name": "youtubot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +8,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.2.1",
-    "moment": "^2.20.1"
-  }
+    "discord.js": "^11.3.2",
+    "member": "0.0.2",
+    "moment": "^2.22.2",
+    "node": "^10.2.0",
+    "opus": "0.0.0",
+    "youtube-audio-stream": "^0.2.0",
+    "youtube-channel-videos": "^1.0.0",
+    "yt-channel-videos": "^1.1.0"
+  },
+  "devDependencies": {},
+  "description": ""
 }
