@@ -83,4 +83,4 @@ bot.on('message', function(message){
    
 
     
-bot.login('NDM3NzUzODQ3OTU2NjM1NjU4.DesNDg.9KABkw_wdAr_dvbkmbELREi5CYs')
+bot.login('process.envToken')
