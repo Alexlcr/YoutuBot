@@ -1,8 +1,8 @@
 {
-  "name": "youtubot",
+  "name": "Youtubot",
   "version": "1.0.0",
   "description": "",
-  "main": "YoutuBot.js",
+  "main": "index.js",
   "dependencies": {
     "discord.js": "^11.3.2",
     "member": "^0.0.2",
